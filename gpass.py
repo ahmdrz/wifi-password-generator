@@ -7,8 +7,8 @@ from random import randint
 
 interface = ''
 essid = ''
-min_size = 6
-salt = ['!','@','#','$','%','^','&','*','(',')']
+min_size = 6 #default minimum size of each result string
+salt = ['!','@','#','$','%','^','&','*','(',')'] #you can add your salts here
 
 def help(exitcode):
     print 'gpass.py -i <interface> -e <essid> [-m <minsize>]'
@@ -68,11 +68,11 @@ if __name__ == "__main__":
        elif opt in ("-m", "--minsize"):
          min_size = int(arg)
    
-   if len(interface) * len(essid) == 0:
+   if len(interface) * len(essid) == 0: # :| can't understand !
        help(1)
 
    try:
-       print 'Program started ! Scaning...'
+       print 'Program started ! Scaning...' # note : if you connected to any network ! scanner will be detected only your essid...
        cells = iwlist.parse(iwlist.scan(interface))
        print ''
        cell = check_essid(cells,essid)
